@@ -1,30 +1,30 @@
-Noel Kubach, Zhoutao Zhang
+Zhoutao Zhang, Noel Kubach
 
 # Assignment 02
+## Task 3 - Ramachandran Maps
 
-## Task 3
+### Required packages
+In out implementation we used `argparse`, `Bio` (biopython), `numpy` and `mathplotlib`.
+These packages need to be installed in order to run our program.
 
-### Dokumentation 
+### Usage
 ```
-Required packages:
-  - NumPy
-  - biopython
-  
-usage: 
-kubach_ramachandran.py [-h] -i < PATH_TO_PDB_FILE_1 > < PATH_TO_PDB_FILE_2 > ... < PATH_TO_PDB_FILE_n >
--o < PATH_FOR_PDF_OUTPUT >
+usage: RamachandranPlot [-h] -i INPUT [INPUT ...] -o OUTPUT
 
-Compute the Ramachandran map for a given set of protrins.
+Plots a Ramachandran diagram to a output file.
 
 options:
   -h, --help            show this help message and exit
-  -i PATH, --input PATH
-                        Path to pdb files with protein structure
-  -o PATH, --output PATH
-                        Path to save the generated Ramachandran maps.
+  -i INPUT [INPUT ...], --input INPUT [INPUT ...]
+                        Paths to .pdb files
+  -o OUTPUT, --output OUTPUT
+                        Paths to output PDF.
 ```
-
-### Usage example:
-```bash
-python kubach_ramachandran.py -i testfiles/test1.pdb testfiles/test2.pdb testfiles/test3.pdb -o output/
+### Example
+```shell
+python kubach_ramachandran.py -i resources/1t8z.pdb resources/3gp6.pdb resources/5ire.pdb -o resources/ramachandran.pdf
 ```
+Resulting PDF: [ramachandran.pdf](resources%2Framachandran.pdf)
+![img.png](resources/1t8z.png)
+![img.png](resources/3gp6.png)
+![img.png](resources/5ire.png)
