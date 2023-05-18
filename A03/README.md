@@ -25,5 +25,5 @@ options:
 ```
 ### Example
 ```shell
-python zhang_assignment3.py -i .\Supplementary
+python zhang_assignment3.py -i Supplementary
 ```

@@ -255,7 +255,7 @@ def distances(pdb_files):
     plt.figure()
     plt.hist(distance_helices, bins=[i for i in np.arange(2,16,1)],density=True, label="Distance of only helices amino acids.", color='salmon', alpha=0.7)
     plt.hist(distances,bins=[i for i in np.arange(2,16,1)],density=True, label="Distance of all backbone amino acids.", color='palegreen', alpha=0.7)
-    plt.xlabel("Distance between backbone N atoms and the O atom \n of backbone C = O groups four residues earlier")
+    plt.xlabel("Distance (Angström) between backbone N atoms and the O atom \n of backbone C = O groups four residues earlier")
     plt.ylabel("Probability density")
     plt.legend()
     plt.show()
@@ -273,7 +273,7 @@ def main():
         for file in os.listdir(path):
             # We only need pdb files, ignore other format
             if file.endswith(".pdb"):
-                pdb_files.append(os.path.join(".\Supplementary_full", file))
+                pdb_files.append(os.path.join(path, file))
     abundance_ss(pdb_files)
     propensities_amino_acid(pdb_files)
     distances(pdb_files)
