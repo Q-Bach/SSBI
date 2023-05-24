@@ -18,13 +18,17 @@ options:
   -i INPUT [INPUT ...], --input INPUT [INPUT ...]
                         Paths to .pdb files
   -o OUTPUT, --output OUTPUT
-                        Paths to output PDF.
+                        Paths to output. Ending specifies file type (e.g. .pdf).
 ```
 ### Example
 ```shell
-python kubach_ramachandran.py -i resources/1t8z.pdb resources/3gp6.pdb resources/5ire.pdb -o resources/ramachandran.pdf
+python kubach_ramachandran.py -i resources/1igt.pdb -o resources/1IGT.pdf
+python kubach_ramachandran.py -i resources/5ire.pdb -o resources/5IRE.pdf
+python kubach_ramachandran.py -i resources/2mwk.pdb -o resources/2MWK.pdf
+python kubach_ramachandran.py -i resources/5ire.pdb resources/5ire.pdb resources/2mwk.pdb -o resources/all.pdf
 ```
-Resulting PDF: [ramachandran.pdf](resources%2Framachandran.pdf)
-![img.png](resources/1t8z.png)
-![img.png](resources/3gp6.png)
-![img.png](resources/5ire.png)
+The resulting pdfs can be found in the [resources](resources) folder.\
+![1IGT.png](resources%2F1IGT.png)\
+![5IRE.png](resources%2F5IRE.png)\
+![2MWK.png](resources%2F2MWK.png)\
+![all.png](resources%2Fall.png)
