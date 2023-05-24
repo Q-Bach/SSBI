@@ -2,6 +2,30 @@ Noel Kubach, Zhoutao Zhang
 
 # Assignment 04
 
+## Task 1
+### Required packages
+The python script `Kubach_Noel_04_01` requires the packages
+numpy, Biopython, mathplotlib and seaborn
+
+### Usage
+```
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Path to .pdb file
+  -o OUTPUT, --output OUTPUT
+                        Paths to output folder. Files dssp_matrix.tsv as well as two figures will be created
+                        automatically.
+```
+
+### Example
+```shell
+python Kubach_Noel_04_01.py -i resources/5jxv.pdb -o resources
+```
+This generates the files [`dssp_matrix.tsv`](resources/dssp_matrix.tsv),
+[`dssp_continuous.png`](resources/dssp_continuous.png) and
+[`dssp_discrete.png`](resources/dssp_discrete.png).
+
 ## Task 2
 
 ### Required packages
