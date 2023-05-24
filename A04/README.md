@@ -29,7 +29,7 @@ This generates the files [`dssp_matrix.tsv`](resources/dssp_matrix.tsv),
 ## Task 2
 
 ### Required packages
-In out implementation we used `argparse` and `numpy`.
+The python script `zhang_chou_fasman` requires the packages `argparse` and `numpy`.
 These packages need to be installed in order to run our program.
 
 ### Usage
