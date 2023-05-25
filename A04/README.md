@@ -29,12 +29,12 @@ This generates the files [`dssp_matrix.tsv`](resources/dssp_matrix.tsv),
 ## Task 2
 
 ### Required packages
-The python script `zhang_chou_fasman` requires the packages `argparse` and `numpy`.
+The python script `Zhang_Zhoutao_04_02.py` requires the packages `argparse` and `numpy`.
 These packages need to be installed in order to run our program.
 
 ### Usage
 ```
-usage: zhang_chou_fasman.py [-h] -s SEQUENCE
+usage: Zhang_Zhoutao_04_02.py [-h] -s SEQUENCE
 
 Predict the secondary structure of the input sequence
 
@@ -45,5 +45,5 @@ options:
 ```
 ### Example
 ```shell
-python zhang_chou_fasman.py -s MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
+python Zhang_Zhoutao_04_02.py -s MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
 ```
