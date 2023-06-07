@@ -97,10 +97,56 @@ def match_and_extract_atoms(model1: PDB.Model, model2: PDB.Model) -> (list[PDB.A
     :param model2: second model
     :return: two lists with matching atoms
     """
-    # checking, whether both models have the same number of chains:
+
+    def remove_non_protein_chains(model: PDB.Model):
+        """
+        function to remove chains from a PDB model,
+        that do not contain amino acids.
+        :param model: PDB model
+        :return: model only with protein chains
+        """
+        non_protein_chains = []
+        # finding chains without protein sequences
+        for chain in model.child_dict.keys():
+            if chain_to_seq(model.child_dict[chain])[0] == '':
+                non_protein_chains.append(chain)
+        # removing found chains
+        for non_protein_chain in non_protein_chains:
+            model.detach_child(non_protein_chain)
+        return model
+
+    def trim_exceeding_chains(model1: PDB.Model, model2: PDB.Model):
+        """
+        Trims two PDB models to contain the same number of chains in the end.
+        :param model1: first model
+        :param model2: second model
+        :return: models with same number of chains
+        """
+        if len(model1) > len(model2):
+            original_number_of_chains = len(model1)
+            for i in range(len(model2), len(model1)):
+                model1.detach_child([key for key in model1.child_dict.keys()][len(model2)])
+            print("         The number of chains of the first structure was reduced from {:d} to {:d}."
+                  .format(original_number_of_chains, len(model1)),
+                  file=sys.stderr)
+        elif len(model2) > len(model1):
+            original_number_of_chains = len(model2)
+            for i in range(len(model1), len(model2)):
+                model2.detach_child([key for key in model2.child_dict.keys()][len(model1)])
+            print("         The number of chains of the second structure was reduced from {:d} to {:d}."
+                  .format(original_number_of_chains, len(model2)),
+                  file=sys.stderr)
+        return model1, model2
+
+    # Removing chains that do not contain a sequence:
+    model1 = remove_non_protein_chains(model1)
+    model2 = remove_non_protein_chains(model2)
+
+    # if models do have different number of chains, exceeding chains are removed
     if len(model1) != len(model2):
-        print("The models have a different number of chains.", file=sys.stderr)
-        exit(1)
+        print("Warning: The models have a different number of chains.", file=sys.stderr)
+        # reducing number of chains of larger model:
+        model1, model2 = trim_exceeding_chains(model1, model2)
 
     chains1 = [chain for chain in model1.get_chains()]
     chains2 = [chain for chain in model2.get_chains()]
