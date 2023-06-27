@@ -8,7 +8,7 @@ def parse_args():
     :return: parsed arguments
     """
     args_parser = argparse.ArgumentParser(
-        prog="Tryptic dicestion",
+        prog="Kubach_Noel_07_02",
         description="Generates the peptides expected from a digestion with trypsin"
                     "and calculates the masses of the peptides")
     args_parser.add_argument(
@@ -37,12 +37,13 @@ def main():
     # calculating masses and printing report:
     # generating formatting string:
     longest_peptide = len(peptides[0])
-    template = "{:<" + str(longest_peptide+1) + "s} | {:<20.4f} | {:<20.4f}"
-    print(str("{:<" + str(longest_peptide+2) + "s} | {:<20s} | {:<20s}")
-          .format("\nPeptides", "monoisotopic mass", "average mass"))  # Header
-    print("-" * (longest_peptide + 42))
+    template = "{:<" + str(longest_peptide + 1) + "s} | {:<22.4f} | {:<22.4f}"
+    print(str("{:<" + str(longest_peptide + 2) + "s} | {:<22s} | {:<22s}")
+          .format("\nPeptides", "monoisotopic mass (Da)", "average mass (Da)"))  # Header
+    print("-" * (longest_peptide + 44))
     for peptide in trypsin(str(sequence.seq)):
         print(template.format(peptide, monoisotopic_mass(peptide), average_mass(peptide)))
+
 
 def trypsin(seq: str) -> []:
     """
@@ -57,12 +58,12 @@ def trypsin(seq: str) -> []:
     prev_cut = -1
     for i in range(len(seq)):
         aa = seq[i]
-        aa_next = seq[i+1] if i+1 < len(seq) else ""
+        aa_next = seq[i + 1] if i + 1 < len(seq) else ""
         if (aa == "R" or aa == "K") and aa_next != "P":
-            peptides.append(seq[prev_cut+1:i+1])
+            peptides.append(seq[prev_cut + 1:i + 1])
             prev_cut = i
-    if prev_cut+1 != len(seq):
-        peptides.append(seq[prev_cut+1:])
+    if prev_cut + 1 != len(seq):
+        peptides.append(seq[prev_cut + 1:])
 
     return sorted(peptides, key=lambda x: len(x), reverse=True)
 
@@ -98,13 +99,13 @@ def monoisotopic_mass(peptide: str) -> float:
     }
 
     peptide = peptide.upper()
-    mass = 15.99491 + 2*1.00782 # monoisotopic mass of water (C and N-terminus)
+    mass = 15.99491 + 2 * 1.00782  # monoisotopic mass of water (C and N-terminus)
     # iterating over amino acids:
     for aa in peptide:
         if aa in aa_mass.keys():
             mass += aa_mass.get(aa)
 
-    return(mass)
+    return mass
 
 
 def average_mass(peptide: str) -> float:
@@ -138,12 +139,13 @@ def average_mass(peptide: str) -> float:
     }
 
     peptide = peptide.upper()
-    mass = 15.99977 + 2*1.00811 # average mass of water (C and N-terminus)
+    mass = 15.99977 + 2 * 1.00811  # average mass of water (C and N-terminus)
     # iterating over amino acids:
     for aa in peptide:
         if aa in aa_mass.keys():
             mass += aa_mass.get(aa)
 
-    return(mass)
+    return mass
+
 
 main()
