@@ -40,6 +40,7 @@ def main():
     # reading in first chain of first model of PDB file:
     parser = PDBParser()
     chain = parser.get_structure(os.path.basename(args.input[0]), args.input[0]).get_models().__next__().get_chains().__next__()
+
     # generating array with residues of the chain:
     residues = [residue for residue in chain.get_residues()]
 
