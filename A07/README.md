@@ -70,3 +70,49 @@ R                                                  | 174.1117               | 17
 K                                                  | 146.1055               | 146.1901              
 
 ````
+
+## Task 4
+
+### Required packages
+* Biopython
+* Argparse
+
+### Usage
+````
+usage: Zhang_Zhoutao_07_04.py [-h] -s <sequence>
+
+Calculate the masses of all b- and y-ions and their m/z ratio
+
+options:
+  -s, --sequence <sequence> input sequence 
+  -h, --help                show this help message and exit
+````
+
+### Example
+````shell
+python Zhang_Zhoutao_07_04.py -s HFEEDMGRK
+Input sequence is: HFEEDMGRK
+Length:  9
+Seq | No. |     B     |    m/z
+----------------------------------
+H   |    1|  138.06673|  138.06673
+F   |    2|  285.13514|  285.13514
+E   |    3|  414.17773|  414.17773
+E   |    4|  543.22032|  543.22032
+D   |    5|  658.24726|  658.24726
+M   |    6|  789.28775|  789.28775
+G   |    7|  846.30921|  846.30921
+R   |    8| 1002.41032| 1002.41032
+K   |    9| 1130.50528| 1130.50528
+Seq | No. |     Y     |    m/z
+----------------------------------
+H   |    9| 1148.51583| 1148.51583
+F   |    8| 1011.45692| 1011.45692
+E   |    7|  864.38851|  864.38851
+E   |    6|  735.34592|  735.34592
+D   |    5|  606.30333|  606.30333
+M   |    4|  491.27639|  491.27639
+G   |    3|   360.2359|   360.2359
+R   |    2|  303.21444|  303.21444
+K   |    1|  147.11333|  147.11333
+````

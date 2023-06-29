@@ -40,8 +40,9 @@ def parse_args():
         description="Generates the peptides expected from a digestion with trypsin"
                     "and calculates the masses of the peptides")
     args_parser.add_argument(
-        "fasta",
-        help="Path to the fasta containing the protein sequence.",
+        "-s",
+        "--sequence",
+        help="A sequence fragment",
         nargs=1,
         type=str
     )
@@ -73,10 +74,11 @@ def b_y_mass(seq):
 def main():
     args = parse_args()
 
-    with open(args.fasta[0], "r") as f:
-        seq = SeqIO.read(f, format="fasta")
+    seq = args.sequence[0]
 
-    print("Found sequence of length: " + str(len(seq)))
+    print("Input sequence is: " + seq)
+
+    print("Length: ", len(seq))
 
     b_mass, y_mass = b_y_mass(seq)
 
